@@ -1,4 +1,8 @@
 package Console;
 
-public class MenuConsole extends Console{
+public class MenuConsole extends Console
+{
+
+
+
 }

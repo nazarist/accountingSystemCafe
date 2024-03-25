@@ -6,12 +6,12 @@ import Config.MainConf;
 import java.util.Scanner;
 
 public class Console {
-    protected Scanner scanner;
-    protected Cafe cafe;
+    protected static Scanner scanner;
+    protected static Cafe cafe;
 
-    Console(){
-        this.scanner = new Scanner(System.in);
-        this.cafe = Cafe.get();
+    static {
+        cafe = Cafe.get();
+        scanner = new Scanner(System.in);
     }
 
     public static void out(String... text)
@@ -36,13 +36,21 @@ public class Console {
     public static void lineWithName()
     {
         StringBuilder line = new StringBuilder();
-
         int len = MainConf.LENGTH_MENU_LINE - (MainConf.CAFE_NAME.length() / 2); // довжина половини лінії без назви  ------------------------------{ "+ MainConf.CAFE_NAME +" }--------------------------------
 
 
         line.append("-".repeat(Math.max(0, len)));
-
         out("", line + "{ "+ MainConf.CAFE_NAME +" }" + line, "");
+    }
+
+    public static void lineWithName(String name)
+    {
+        StringBuilder line = new StringBuilder();
+        int len = MainConf.LENGTH_MENU_LINE - (name.length() / 2);
+
+
+        line.append("-".repeat(Math.max(0, len)));
+        out("", line + "{ "+ name +" }" + line, "");
     }
 
     public static void line()

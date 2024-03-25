@@ -14,6 +14,15 @@ public class Reservation {
     }
 
 
+//    public static Reservation createReservation(Data data, int seats, int time, String date, String name, String phone) {
+//
+////        Visitor visitor = new Visitor(name, phone);
+////        Table table = data.getGENERATOR().generateTable(data, seats);
+//
+//        return new Reservation(visitor, table, reservationTime);
+//    }
+
+
 
 
 

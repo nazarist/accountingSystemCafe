@@ -31,6 +31,16 @@ public class TestDataGenerator {
         return visitors;
     }
 
+    public List<Visitor> generateVisitor() {
+        List<Visitor> visitors = new ArrayList<>();
+        for (int i = 0; i < MAX_VISITORS; i++) {
+            String name = NAMES[RANDOM.nextInt(NAMES.length)];
+            String contact = CONTACTS[RANDOM.nextInt(CONTACTS.length)];
+            visitors.add(new Visitor(name, contact));
+        }
+        return visitors;
+    }
+
     public List<Table> generateTables() {
         List<Table> tables = new ArrayList<>();
         for (int i = 0; i < MAX_TABLES; i++) {
@@ -44,7 +54,7 @@ public class TestDataGenerator {
         List<Visitor> visitors = data.getVisitors();
         List<Table> tables = data.getTables();
 
-        List<Table> reservedTable = data.getReservedTable();
+        List<Table> reservedTable = data.getReservedTables();
 
 
 

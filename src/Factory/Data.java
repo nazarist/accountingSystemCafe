@@ -40,11 +40,35 @@ public class Data {
     }
 
 
-    public List<Table> getReservedTable()
+    public List<Table> getReservedTables()
     {
         return getReservations()
                 .stream()
                 .map(Reservation::getTable)
+                .toList();
+    }
+
+
+
+
+
+
+
+    public List<Table> getFreeTables(List<Table> tables)
+    {
+        return tables
+                .stream()
+                .filter(table -> !getReservedTableIds().contains(table.getNumber()))
+                .toList();
+    }
+
+
+
+    public List<Table> getReservedTables(List<Table> tables)
+    {
+        return tables
+                .stream()
+                .filter(table -> getReservedTableIds().contains(table.getNumber()))
                 .toList();
     }
 
@@ -58,7 +82,7 @@ public class Data {
 
     public List<Integer> getReservedTableIds()
     {
-        return getReservedTable()
+        return getReservedTables()
                 .stream()
                 .map(Table::getNumber)
                 .toList();
@@ -89,5 +113,23 @@ public class Data {
 
     public void addReservations(Reservation reservations) {
         this.reservations.add(reservations);
+    }
+
+
+
+    public List<Table> getTablesBySeats(int seats)
+    {
+        return tables
+                .stream()
+                .filter(table -> table.getSeats() >= seats)
+                .toList();
+    }
+
+    public Table getTableByNumber(int tableNumber, List<Table> tables) {
+        return tables
+                .stream()
+                .filter(table -> table.getNumber() == tableNumber)
+                .findFirst()
+                .orElse(null);
     }
 }

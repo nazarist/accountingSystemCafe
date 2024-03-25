@@ -1,7 +1,7 @@
 package App;
 
 public class Employee {
-    private String name;
+    private static String name;
     private String position;
     private String schedule;
 
